@@ -1,13 +1,13 @@
 [package]
-distribution = "2201.9.0"
+distribution = "{{BAL_VERSION}}"
 org = "ballerinax"
-name = "stripe"
+name = "{{MODULE_NAME_CC}}"
 version = "@toml.version@"
 license = ["Apache-2.0"]
 authors = ["Ballerina"]
 keywords = ["Finance/Payment", "Cost/Freemium"]
 icon = "icon.png"
-repository = "https://github.com/ballerina-platform/module-ballerinax-stripe"
+repository = "https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}"
 
 [build-options]
 observabilityIncluded = true

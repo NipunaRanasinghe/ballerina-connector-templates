@@ -1,14 +1,12 @@
-# Ballerina Stripe connector
+# Ballerina {{MODULE_NAME_PC}} connector
 
-[![Build](https://github.com/ballerina-platform/module-ballerinax-stripe/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-stripe/actions/workflows/ci.yml)
-[![Trivy](https://github.com/ballerina-platform/module-ballerinax-stripe/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-stripe/actions/workflows/trivy-scan.yml)
-[![GraalVM Check](https://github.com/ballerina-platform/module-ballerinax-stripe/actions/workflows/build-with-bal-test-native.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-stripe/actions/workflows/build-with-bal-test-native.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-stripe.svg)](https://github.com/ballerina-platform/module-ballerinax-stripe/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/stripe.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%stripe)
+[![Build](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/ci.yml)
+[![Trivy](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/trivy-scan.yml)
+[![GraalVM Check](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-{{REPO_NAME}}.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/commits/master)
+[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/{{MODULE_NAME_CC}}.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%{{MODULE_NAME_CC}})
 
-Stripe offers payment processing software and application programming interfaces for e-commerce websites and mobile applications.
-
-The Stripe API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+// TODO: Add a brief description of the module.
 
 ## Build from the source
 
@@ -98,7 +96,7 @@ All the contributors are encouraged to read the [Ballerina Code of Conduct](http
 
 ## Useful links
 
-* For more information go to the [`stripe` package](https://central.ballerina.io/ballerinax/stripe/latest).
+* For more information go to the [`{{MODULE_NAME_CC}}` package](https://central.ballerina.io/ballerinax/{{MODULE_NAME_CC}}/latest).
 * For example demonstrations of the usage, go to [Ballerina By Examples](https://ballerina.io/learn/by-example/).
 * Chat live with us via our [Discord server](https://discord.gg/ballerinalang).
 * Post all technical questions on Stack Overflow with the [#ballerina](https://stackoverflow.com/questions/tagged/ballerina) tag.
