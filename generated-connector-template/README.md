@@ -6,7 +6,21 @@
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-{{REPO_NAME}}.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/commits/master)
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/{{MODULE_NAME_CC}}.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%{{MODULE_NAME_CC}})
 
-// TODO: Add a brief description of the module.
+## Overview
+
+//TODO: Add overview mentioning the purpose of the module, supported REST API versions, and other high-level details.
+
+## Setup guide
+
+//TODO: Add detailed steps to obtain credentials and configure the module.
+
+## Quickstart
+
+//TODO: Add a quickstart guide to demonstrate a basic functionality of the module, including sample code snippets.
+
+## Examples
+
+The `{{MODULE_NAME_PC}}` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/tree/main/examples/), covering the following use cases:
 
 ## Build from the source
 
