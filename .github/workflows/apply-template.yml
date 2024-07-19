@@ -3,6 +3,9 @@ name: Create Connector Repository
 on:
   workflow_dispatch:
     inputs:
+      repo_org:
+        description: 'GitHub organization where the new repository should be created.'
+        required: true
       repo_name:
         description: 'Name part of the new connector repository. Example: slack, discord, twitter'
         required: true
@@ -23,16 +26,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           repo_name="${{ github.event.inputs.repo_name }}"
-          org="your-github-org"
           template_repo="ballerina-connector-template"
           
           # Create a new repository from the template
           curl -u "${{ secrets.GITHUB_TOKEN }}:x-oauth-basic" \
-            https://api.github.com/repos/${org}/${template_repo}/generate \
-            -d "{\"owner\":\"${org}\", \"name\":\"${repo_name}\", \"include_all_branches\":false, \"private\":false}"
+            https://api.github.com/repos/${repo_org}/${template_repo}/generate \
+            -d "{\"owner\":\"${repo_org}\", \"name\":\"${repo_name}\", \"include_all_branches\":false, \"private\":false}"
 
           # Clone the newly created repository
-          git clone https://github.com/${org}/${repo_name}.git
+          git clone https://github.com/${repo_org}/${repo_name}.git
           cd ${repo_name}
 
           # Replace placeholders with the actual repository name
@@ -51,11 +53,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           repo_name="${{ github.event.inputs.repo_name }}"
-          org="your-github-org"
+      
           
           # Create a pull request from the new branch
           curl -u "${{ secrets.GITHUB_TOKEN }}:x-oauth-basic" \
             -X POST \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${org}/${repo_name}/pulls \
+            https://api.github.com/repos/${repo_org}/${repo_name}/pulls \
             -d "{\"title\":\"Initialize repository with connector name\", \"head\":\"initialize-repo\", \"base\":\"main\", \"body\":\"This pull request initializes the repository with the connector name.\"}"
