@@ -54,6 +54,7 @@ function processFile(string filePath, [regexp:RegExp, string][] placeholders) re
     string strContent = content;
     foreach [regexp:RegExp, string] [placeholder, value] in placeholders {
         strContent = placeholder.replaceAll(strContent, value);
+        log:printInfo("Modified content: " + strContent);
     }
 
     check io:fileWriteString(filePath, strContent);
