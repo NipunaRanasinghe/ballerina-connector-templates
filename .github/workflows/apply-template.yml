@@ -49,7 +49,7 @@ jobs:
       - name: Apply templates and replace placeholders
         run: |
           
-          cp -r lib-repo/generated-connector-template/* target-repo/
+          cp -r template-repo/generated-connector-template/* target-repo/
           cd target-repo
           bal run replace_placeholders.bal -- . ${{ github.event.inputs.module_name }} ${{ github.event.inputs.repo_name }} ${{ github.event.inputs.ballerina_version }} ${{ github.event.inputs.module_version }}
           git config user.name github-actions
