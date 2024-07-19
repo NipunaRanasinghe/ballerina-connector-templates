@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/lang.regexp;
 import ballerina/log;
 
-public type TemplateFileExt ".bal"|".md"|".json"|".yaml"|".yml"|".toml"|".gradle"|".properties";
+public type TemplateFileExt "bal"|"md"|"json"|"yaml"|"yml"|"toml"|"gradle"|"properties";
 
 public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion) returns error? {
 
