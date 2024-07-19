@@ -50,8 +50,8 @@ jobs:
         run: |
           
           cp -r template-repo/generated-connector-template/* target-repo/
-          cd target-repo
-          bal run replace_placeholders.bal -- . ${{ github.event.inputs.module_name }} ${{ github.event.inputs.repo_name }} ${{ github.event.inputs.ballerina_version }} ${{ github.event.inputs.module_version }}
+          cd template-repo
+          bal run scripts/replace_placeholders.bal -- .../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.repo_name }} ${{ github.event.inputs.ballerina_version }} ${{ github.event.inputs.module_version }}
           git config user.name github-actions
           git config user.email github-actions@github.com
           git checkout -b apply-templates-${{ github.run_number }}
