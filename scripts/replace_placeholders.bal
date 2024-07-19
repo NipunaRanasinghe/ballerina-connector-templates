@@ -3,7 +3,7 @@ import ballerina/io;
 import ballerina/lang.regexp;
 import ballerina/log;
 
-public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion = "2201.8.0") returns error? {
+public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion) returns error? {
 
     log:printInfo("Generating connector with the following metadata:");
     log:printInfo("Module Name: " + moduleName);
@@ -37,10 +37,16 @@ function processDirectory(string dir, map<string> placeholders) returns error? {
 }
 
 function processFile(string filePath, map<string> placeholders) returns error? {
-    string content = check io:fileReadString(filePath);
-    foreach var [placeholder, value] in placeholders.entries() {
-        content = re `\{\{${placeholder}\}\}`.replaceAll(content, value);
+
+    string|error content = check io:fileReadString(filePath);
+    if content is error {
+        return error ("Error reading file at " + filePath + ":" + content.message());
     }
 
-    check io:fileWriteString(filePath, content);
+    string strContent = content;
+    foreach var [placeholder, value] in placeholders.entries() {
+        strContent = re `\{\{${placeholder}\}\}`.replaceAll(strContent, value);
+    }
+
+    check io:fileWriteString(filePath, strContent);
 }
