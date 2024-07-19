@@ -44,7 +44,7 @@ jobs:
       - name: Setup Ballerina
         uses: ballerina-platform/setup-ballerina@v1
         with:
-          version: latest
+          version: 2201.9.0
 
       - name: Apply templates and replace placeholders
         run: |
