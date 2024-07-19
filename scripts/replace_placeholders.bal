@@ -2,7 +2,7 @@ import ballerina/file;
 import ballerina/io;
 import ballerina/lang.regexp;
 
-public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion) returns error? {
+public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion = "2201.8.0") returns error? {
 
     // Read placeholder values from a config file or environment variables
     map<string> placeholders = {
