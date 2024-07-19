@@ -37,7 +37,7 @@ function processDirectory(string dir, map<string> placeholders) returns error? {
 }
 
 function processFile(string filePath, map<string> placeholders) returns error? {
-
+    log:printInfo("Processing file: " + filePath);
     string|error content = check io:fileReadString(filePath);
     if content is error {
         return error ("Error reading file at " + filePath + ":" + content.message());
