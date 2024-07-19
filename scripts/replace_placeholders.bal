@@ -1,6 +1,7 @@
 import ballerina/file;
 import ballerina/io;
 import ballerina/lang.regexp;
+import ballerina/log;
 
 public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion = "2201.8.0") returns error? {
 
