@@ -4,6 +4,12 @@ import ballerina/lang.regexp;
 
 public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion = "2201.8.0") returns error? {
 
+    log:printInfo("Generating connector with the following metadata:");
+    log:printInfo("Module Name: " + moduleName);
+    log:printInfo("Repository Name: " + repoName);
+    log:printInfo("Module Version: " + moduleVersion);
+    log:printInfo("Ballerina Version: " + balVersion);
+
     // Read placeholder values from a config file or environment variables
     map<string> placeholders = {
         "MODULE_NAME": moduleName[0].toUpperAscii() + moduleName.substring(1),
