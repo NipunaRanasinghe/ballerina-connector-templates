@@ -12,4 +12,4 @@
 
 ## Examples
 
-The `{{MODULE_NAME_PC}}` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/tree/main/examples/), covering the following use cases:
+The `{{MODULE_NAME_PC}}` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/{{REPO_NAME}}/tree/main/examples/), covering the following use cases:

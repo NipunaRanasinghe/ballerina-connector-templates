@@ -7,7 +7,7 @@ license = ["Apache-2.0"]
 authors = ["Ballerina"]
 keywords = ["Finance/Payment", "Cost/Freemium"]
 icon = "icon.png"
-repository = "https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}"
+repository = "https://github.com/ballerina-platform/{{REPO_NAME}}"
 
 [build-options]
 observabilityIncluded = true

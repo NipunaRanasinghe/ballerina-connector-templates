@@ -6,36 +6,57 @@ on:
       target_repo:
         description: 'Target repository (owner/repo)'
         required: true
+        example: 'ballerina-platform/module-ballerina-aws.s3'
+      module_name:
+        description: 'Module name to be to pu'
+        required: true
+        example: 'github'
+      ballerina_version:
+        description: 'Ballerina version to be used for the connector'
+        required: true
+        example: '2201.9.0'
+      module_version:
+        description: 'Module version to be used for the connector'
+        required: true
+        default: '0.1.0'
+        example: '1.0.0'
       target_branch:
         description: 'Target branch'
-        required: true
+        required: false
         default: 'main'
 
 jobs:
   apply_templates:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo A
+      - name: Checkout template repository
         uses: actions/checkout@v3
         with:
-          path: lib-repo
+          path: template-repo
 
-      - name: Checkout target repo
+      - name: Checkout target repository
         uses: actions/checkout@v3
         with:
           repository: ${{ github.event.inputs.target_repo }}
           path: target-repo
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Apply templates
+      - name: Setup Ballerina
+        uses: ballerina-platform/setup-ballerina@v1
+        with:
+          version: latest
+
+      - name: Apply templates and replace placeholders
         run: |
+          
           cp -r lib-repo/generated-connector-template/* target-repo/
           cd target-repo
+          bal run replace_placeholders.bal -- . ${{ github.event.inputs.module_name }} ${{ github.event.inputs.repo_name }} ${{ github.event.inputs.ballerina_version }} ${{ github.event.inputs.module_version }}
           git config user.name github-actions
           git config user.email github-actions@github.com
           git checkout -b apply-templates-${{ github.run_number }}
           git add .
-          git commit -m "Apply templates from library repo"
+          git commit -m "Apply connector template"
           git push origin apply-templates-${{ github.run_number }}
 
       - name: Create Pull Request
@@ -46,5 +67,5 @@ jobs:
             --repo ${{ github.event.inputs.target_repo }} \
             --base ${{ github.event.inputs.target_branch }} \
             --head apply-templates-${{ github.run_number }} \
-            --title "Apply templates from repo A" \
-            --body "This PR applies templates from repo A to this repository."
+            --title "Apply templates from repo A with placeholders replaced" \
+            --body "This PR applies templates from repo A to this repository, with placeholders replaced."

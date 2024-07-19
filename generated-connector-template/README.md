@@ -1,9 +1,9 @@
 # Ballerina {{MODULE_NAME_PC}} connector
 
-[![Build](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/ci.yml)
-[![Trivy](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/trivy-scan.yml)
-[![GraalVM Check](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-{{REPO_NAME}}.svg)](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/commits/master)
+[![Build](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/ci.yml)
+[![Trivy](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/trivy-scan.yml)
+[![GraalVM Check](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml/badge.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/{{REPO_NAME}}.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/commits/master)
 [![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/{{MODULE_NAME_CC}}.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%{{MODULE_NAME_CC}})
 
 ## Overview
@@ -20,7 +20,7 @@
 
 ## Examples
 
-The `{{MODULE_NAME_PC}}` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-{{REPO_NAME}}/tree/main/examples/), covering the following use cases:
+The `{{MODULE_NAME_PC}}` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/{{REPO_NAME}}/tree/main/examples/), covering the following use cases:
 
 ## Build from the source
 

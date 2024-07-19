@@ -27,7 +27,7 @@ plugins {
     id "com.gradle.enterprise" version "3.2"
 }
 
-rootProject.name = 'module-ballerinax-{{REPO_NAME}}'
+rootProject.name = '{{REPO_NAME}}'
 
 include ':{{MODULE_NAME_CC}}-ballerina'
 
