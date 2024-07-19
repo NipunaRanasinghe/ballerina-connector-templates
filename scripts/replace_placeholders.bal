@@ -28,11 +28,10 @@ function processDirectory(string dir, map<string> placeholders) returns error? {
     file:MetaData[] files = check file:readDir(dir);
 
     foreach file:MetaData file in files {
-        string path = check file:joinPath(dir, file.absPath);
         if (file.dir) {
-            check processDirectory(path, placeholders);
+            check processDirectory(file.absPath, placeholders);
         } else {
-            check processFile(path, placeholders);
+            check processFile(file.absPath, placeholders);
         }
     }
 }
