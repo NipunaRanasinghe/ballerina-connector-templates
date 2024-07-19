@@ -3,6 +3,8 @@ import ballerina/io;
 import ballerina/lang.regexp;
 import ballerina/log;
 
+public type TemplateFileExt ".bal"|".md"|".json"|".yaml"|".yml"|".toml"|".gradle"|".properties";
+
 public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion) returns error? {
 
     log:printInfo("Generating connector with the following metadata:");
@@ -37,10 +39,16 @@ function processDirectory(string dir, map<string> placeholders) returns error? {
 }
 
 function processFile(string filePath, map<string> placeholders) returns error? {
-    log:printInfo("Processing file: " + filePath);
+    string[] nameParts = regexp:split(re `\.`, filePath);
+    string ext = nameParts[nameParts.length() - 1];
+    if ext !is TemplateFileExt {
+        log:printInfo("Skipping file: " + filePath);
+        return;
+    }
+
     string|error content = check io:fileReadString(filePath);
     if content is error {
-        return error ("Error reading file at " + filePath + ":" + content.message());
+        return error("Error reading file at " + filePath + ":" + content.message());
     }
 
     string strContent = content;
