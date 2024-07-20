@@ -13,19 +13,19 @@ public function main(string path, string moduleName, string repoName, string mod
     log:printInfo("Module Version: " + moduleVersion);
     log:printInfo("Ballerina Version: " + balVersion);
 
-    [regexp:RegExp, string][] placeholders = [
-        [re `\{\{MODULE_NAME_PC\}\}`, moduleName[0].toUpperAscii() + moduleName.substring(1)],
-        [re `\{\{MODULE_NAME_CC\}\}`, moduleName[0].toLowerAscii() + moduleName.substring(1)],
-        [re `\{\{REPO_NAME\}\}`, regexp:split(re `/`, repoName)[1]],
-        [re `\{\{MODULE_VERSION\}\}`, moduleVersion],
-        [re `\{\{BAL_VERSION\}\}`, balVersion]
-    ];
+    map<string> placeholders = {
+        "MODULE_NAME_PC": moduleName[0].toUpperAscii() + moduleName.substring(1),
+        "MODULE_NAME_CC": moduleName[0].toLowerAscii() + moduleName.substring(1),
+        "REPO_NAME": regexp:split(re `/`, repoName)[1],
+        "MODULE_VERSION": moduleVersion,
+        "BAL_VERSION": balVersion
+    };
 
     // Recursively process all files in the target directory
     check processDirectory(path, placeholders);
 }
 
-function processDirectory(string dir, [regexp:RegExp, string][] placeholders) returns error? {
+function processDirectory(string dir, map<string> placeholders) returns error? {
     file:MetaData[] files = check file:readDir(dir);
     foreach file:MetaData file in files {
         if file.dir {
@@ -36,7 +36,7 @@ function processDirectory(string dir, [regexp:RegExp, string][] placeholders) re
     }
 }
 
-function processFile(string filePath, [regexp:RegExp, string][] placeholders) returns error? {
+function processFile(string filePath, map<string> placeholders) returns error? {
     string ext = getExtension(filePath);
     if ext !is TemplateFileExt {
         log:printInfo("Skipping file: " + filePath);
@@ -49,8 +49,8 @@ function processFile(string filePath, [regexp:RegExp, string][] placeholders) re
     }
 
     string content = readResult;
-    foreach [regexp:RegExp, string] [placeholder, value] in placeholders {
-        content = placeholder.replaceAll(content, value);
+    foreach [string, string] [placeholder, value] in placeholders.entries() {
+        content = re `\{\{${placeholder}\}\}`.replaceAll(content, value);
     }
 
     check io:fileWriteString(filePath, content);
