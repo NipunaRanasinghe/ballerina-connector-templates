@@ -45,7 +45,7 @@ function processFile(string filePath, map<string> placeholders) returns error? {
 
     string|error readResult = check io:fileReadString(filePath);
     if readResult is error {
-        return error("Error reading file at " + filePath + ":" + readResult.message());
+        return error(string `Error reading file ${filePath} : ${readResult.message()}`);
     }
 
     string content = readResult;
