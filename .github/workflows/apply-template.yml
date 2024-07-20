@@ -3,6 +3,11 @@ name: Apply Templates and Create PR
 on:
   workflow_dispatch:
     inputs:
+      template_type:
+        default: 'Generated Connector Template (Standard)'
+        type: choice
+        options:
+          - Generated Connector Template (Standard)
       target_repo:
         description: 'Target repository'
         required: true
@@ -47,8 +52,8 @@ jobs:
           version: 2201.9.0
 
       - name: Apply templates and replace placeholders
+        if: ${{ github.event.inputs.template_type }} == 'Generated Connector Template (Standard)'
         run: |
-          
           cp -r template-repo/generated-connector-template/* target-repo/
           cd template-repo
           bal run scripts/replace_placeholders.bal -- ../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.target_repo }} ${{ github.event.inputs.module_version }} ${{ github.event.inputs.ballerina_version }}
@@ -68,5 +73,5 @@ jobs:
             --repo ${{ github.event.inputs.target_repo }} \
             --base ${{ github.event.inputs.target_branch }} \
             --head apply-templates-${{ github.run_number }} \
-            --title "Apply templates from repo A with placeholders replaced" \
-            --body "This PR applies templates from repo A to this repository, with placeholders replaced."
+            --title "Add ${{ github.event.inputs.template_type }}" \
+            --body "This PR applies ${{ github.event.inputs.template_type }} template to this repository."
