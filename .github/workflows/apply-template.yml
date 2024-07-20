@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       target_repo:
-        description: 'Target repository (owner/repo)'
+        description: 'Target repository'
         required: true
-        example: 'ballerina-platform/module-ballerina-aws.s3'
+        example: 'ballerina-platform/module-ballerinax-github'
       module_name:
-        description: 'Module name to be to pu'
+        description: 'Module name of the connector'
         required: true
         example: 'github'
       ballerina_version:
@@ -16,7 +16,7 @@ on:
         required: true
         example: '2201.9.0'
       module_version:
-        description: 'Module version to be used for the connector'
+        description: 'Connector version'
         required: true
         default: '0.1.0'
         example: '1.0.0'
