@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       template_type:
+        description: 'Template type'
         default: 'Generated Connector Template (Standard)'
         type: choice
         options:
