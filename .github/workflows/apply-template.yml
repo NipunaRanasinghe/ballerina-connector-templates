@@ -56,7 +56,7 @@ jobs:
         if: ${{ github.event.inputs.template_type }} == 'Generated Connector Template (Standard)'
         run: |
           cp -r template-repo/generated-connector-template/files/* target-repo/
-          cd template-repo/files
+          cd template-repo/generated-connector-template/files
           bal run ../scripts/replace_placeholders.bal -- ../../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.target_repo }} ${{ github.event.inputs.module_version }} ${{ github.event.inputs.ballerina_version }}
           cd ../../target-repo
           git config user.name github-actions
