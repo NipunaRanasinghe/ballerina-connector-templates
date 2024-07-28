@@ -1,7 +1,24 @@
+// Copyright (c) 2024, WSO2 LLC. (http://www.wso2.com).
+//
+// WSO2 LLC. licenses this file to you under the Apache License,
+// Version 2.0 (the "License"); you may not use this file except
+// in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+
 import ballerina/file;
 import ballerina/io;
 import ballerina/lang.regexp;
 import ballerina/log;
+import ballerina/time;
 
 // Define the file extensions that are considered as template files
 public type TemplateFileExt "bal"|"md"|"json"|"yaml"|"yml"|"toml"|"gradle"|"properties";
@@ -16,9 +33,10 @@ public function main(string path, string moduleName, string repoName, string mod
     map<string> placeholders = {
         "MODULE_NAME_PC": moduleName[0].toUpperAscii() + moduleName.substring(1),
         "MODULE_NAME_CC": moduleName[0].toLowerAscii() + moduleName.substring(1),
-        "REPO_NAME": regexp:split(re `/`, repoName)[1],
+        "REPO_NAME": repoName,
         "MODULE_VERSION": moduleVersion,
-        "BAL_VERSION": balVersion
+        "BAL_VERSION": balVersion,
+        "LICENSE_YEAR": time:utcToCivil(time:utcNow()).year.toString()
     };
 
     // Recursively process all files in the target directory
@@ -45,7 +63,7 @@ function processFile(string filePath, map<string> placeholders) returns error? {
 
     string|error readResult = check io:fileReadString(filePath);
     if readResult is error {
-        return error(string `Error reading file ${filePath} : ${readResult.message()}`);
+        return error(string `Error reading file ${filePath}: ${readResult.message()}`);
     }
 
     string content = readResult;
