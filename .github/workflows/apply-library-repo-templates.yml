@@ -45,6 +45,7 @@ jobs:
         with:
           repository: NipunaRanasinghe/${{ github.event.inputs.target_repo }}
           path: target-repo
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup Ballerina
         uses: ballerina-platform/setup-ballerina@v1.1.0
