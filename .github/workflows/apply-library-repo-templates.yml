@@ -39,6 +39,7 @@ on:
         description: 'Connector name to be used in the documentation (If not provided, module name will be used)'
         required: false
         example: 'OpenAI Chat'
+        default: ''
 
 jobs:
   apply_templates:
