@@ -12,11 +12,11 @@ on:
       target_repo:
         description: 'Target repository to apply the template'
         required: true
-        example: 'module-ballerinax-github'
+        example: 'module-ballerinax-openai.chat'
       module_name:
-        description: 'Module name of the connector'
+        description: 'Module name of the connector used in Ballerina.toml'
         required: true
-        example: 'github'
+        example: 'openai.chat'
       ballerina_version:
         description: 'Compatible Ballerina version to be used for the connector'
         required: true
@@ -30,6 +30,10 @@ on:
         description: 'Target branch'
         required: false
         default: 'main'
+      connector_name:
+        description: 'Connector name to be used in the documentation (If not provided, module name will be used)'
+        required: false
+        example: 'OpenAI Chat'
 
 jobs:
   apply_templates:
@@ -57,7 +61,7 @@ jobs:
         run: |
           cp -r template-repo/library-templates/generated-connector-template/files/* target-repo/
           cd template-repo/library-templates/generated-connector-template/scripts/
-          bal run replace_placeholders.bal -- ../../../../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.target_repo }} ${{ github.event.inputs.module_version }} ${{ github.event.inputs.ballerina_version }}
+          bal run replace_placeholders.bal -- ../../../../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.target_repo }} ${{ github.event.inputs.module_version }} ${{ github.event.inputs.ballerina_version }}  ${{ github.event.inputs.connector_name }}
           cd ../../../../target-repo
           git config user.name github-actions
           git config user.email github-actions@github.com
