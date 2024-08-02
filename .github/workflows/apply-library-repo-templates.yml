@@ -15,7 +15,7 @@ on:
         example: 'module-ballerinax-openai.chat'
       target_org:
         description: 'Github organization of the target repository to apply the template'
-        required: true
+        required: false
         example: 'ballerina-platform'
         default: 'ballerina-platform'
       module_name:
@@ -45,6 +45,16 @@ jobs:
   apply_templates:
     runs-on: ubuntu-latest
     steps:
+      - name: Print Inputs
+        run: |
+          echo "Template Type: ${{ github.event.inputs.template_type }}"
+          echo "Target Repository: ${{ github.event.inputs.target_repo }}"
+          echo "Target Organization: ${{ github.event.inputs.target_org }}"
+          echo "Module Name: ${{ github.event.inputs.module_name }}"
+          echo "Ballerina Version: ${{ github.event.inputs.ballerina_version }}"
+          echo "Module Version: ${{ github.event.inputs.module_version }}"
+          echo "Target Branch: ${{ github.event.inputs.target_branch }}"
+          echo "Connector Name: ${{ github.event.inputs.connector_name }}"
       - name: Checkout template repository
         uses: actions/checkout@v3
         with:
