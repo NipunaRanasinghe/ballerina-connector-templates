@@ -13,6 +13,11 @@ on:
         description: 'Target repository to apply the template'
         required: true
         example: 'module-ballerinax-openai.chat'
+      target_org:
+        description: 'Github organization of the target repository to apply the template'
+        required: true
+        example: 'ballerina-platform'
+        default: 'ballerina-platform'
       module_name:
         description: 'Module name of the connector used in Ballerina.toml'
         required: true
@@ -47,7 +52,7 @@ jobs:
       - name: Checkout target repository
         uses: actions/checkout@v3
         with:
-          repository: NipunaRanasinghe/${{ github.event.inputs.target_repo }}
+          repository: ${{ github.event.inputs.target_org }}/${{ github.event.inputs.target_repo }}
           path: target-repo
           token: ${{ secrets.PAT_TOKEN }}
 
@@ -61,7 +66,7 @@ jobs:
         run: |
           cp -r template-repo/library-templates/generated-connector-template/files/* target-repo/
           cd template-repo/library-templates/generated-connector-template/scripts/
-          bal run replace_placeholders.bal -- ../../../../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.target_repo }} ${{ github.event.inputs.module_version }} ${{ github.event.inputs.ballerina_version }}  ${{ github.event.inputs.connector_name }}
+          bal run replace_placeholders.bal -- ../../../../target-repo/ ${{ github.event.inputs.module_name }} ${{ github.event.inputs.target_org }} ${{ github.event.inputs.target_repo }} ${{ github.event.inputs.module_version }} ${{ github.event.inputs.ballerina_version }}  ${{ github.event.inputs.connector_name }}
           cd ../../../../target-repo
           git config user.name github-actions
           git config user.email github-actions@github.com
@@ -75,7 +80,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           gh pr create \
-            --repo NipunaRanasinghe/${{ github.event.inputs.target_repo }} \
+            --repo ${{ github.event.inputs.target_org }}/${{ github.event.inputs.target_repo }} \
             --base ${{ github.event.inputs.target_branch }} \
             --head apply-templates-${{ github.run_number }} \
             --title "Add ${{ github.event.inputs.template_type }}" \

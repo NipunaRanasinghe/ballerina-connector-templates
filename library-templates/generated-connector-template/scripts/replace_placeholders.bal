@@ -23,7 +23,7 @@ import ballerina/time;
 // Define the file extensions that are considered as template files
 public type TemplateFileExt "bal"|"md"|"json"|"yaml"|"yml"|"toml"|"gradle"|"properties";
 
-public function main(string path, string moduleName, string repoName, string moduleVersion, string balVersion, string connectorName = "") returns error? {
+public function main(string path, string moduleName, string repoOrg, string repoName, string moduleVersion, string balVersion, string connectorName = "") returns error? {
     log:printInfo("Generating connector template with the following metadata:");
     log:printInfo("Module Name: " + moduleName);
     log:printInfo("Repository Name: " + repoName);
@@ -34,6 +34,7 @@ public function main(string path, string moduleName, string repoName, string mod
     map<string> placeholders = {
         "MODULE_NAME_PC": connectorName == "" ? moduleName[0].toUpperAscii() + moduleName.substring(1) : connectorName,
         "MODULE_NAME_CC": moduleName[0].toLowerAscii() + moduleName.substring(1),
+        "REPO_ORG": repoOrg,
         "REPO_NAME": repoName,
         "MODULE_VERSION": moduleVersion,
         "BAL_VERSION": balVersion,

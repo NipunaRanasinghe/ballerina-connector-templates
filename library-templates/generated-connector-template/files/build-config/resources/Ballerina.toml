@@ -7,7 +7,7 @@ license = ["Apache-2.0"]
 authors = ["Ballerina"]
 keywords = [] // TODO: Add keywords
 icon = "icon.png" // TODO: Add icon path
-repository = "https://github.com/ballerina-platform/{{REPO_NAME}}"
+repository = "https://github.com/{{REPO_ORG}}/{{REPO_NAME}}"
 
 [build-options]
 observabilityIncluded = true

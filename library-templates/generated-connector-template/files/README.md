@@ -1,10 +1,10 @@
 # Ballerina {{MODULE_NAME_PC}} connector
 
-[![Build](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/ci.yml)
-[![Trivy](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/trivy-scan.yml)
-[![GraalVM Check](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml/badge.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/{{REPO_NAME}}.svg)](https://github.com/ballerina-platform/{{REPO_NAME}}/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/{{MODULE_NAME_CC}}.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%{{MODULE_NAME_CC}})
+[![Build](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/actions/workflows/ci.yml)
+[![Trivy](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/actions/workflows/trivy-scan.yml/badge.svg)](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/actions/workflows/trivy-scan.yml)
+[![GraalVM Check](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml/badge.svg)](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/actions/workflows/build-with-bal-test-native.yml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/{{REPO_ORG}}/{{REPO_NAME}}.svg)](https://github.com/{{REPO_ORG}}/{{REPO_NAME}}/commits/master)
+[![GitHub Issues](https://img.shields.io/github/issues/{{REPO_ORG}}/ballerina-library/module/{{MODULE_NAME_CC}}.svg?label=Open%20Issues)](https://github.com/{{REPO_ORG}}/ballerina-library/labels/module%{{MODULE_NAME_CC}})
 
 ## Overview
 
@@ -104,7 +104,7 @@ Execute the commands below to build from the source.
 
 As an open-source project, Ballerina welcomes contributions from the community.
 
-For more information, go to the [contribution guidelines](https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md).
+For more information, go to the [contribution guidelines](https://github.com/{{REPO_ORG}}/ballerina-lang/blob/master/CONTRIBUTING.md).
 
 ## Code of conduct
 
